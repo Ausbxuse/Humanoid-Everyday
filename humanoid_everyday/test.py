@@ -4,7 +4,7 @@ from humanoid_everyday import Dataloader
 ds = Dataloader("~/Downloads/flip_a_soft_plate.zip")
 print("Episode length of dataset:", len(ds))
 
-# Displaying high dimensional data at first episode, second timestep.
+# Display high dimensional data at first episode, second timestep.
 ds.display_image(0, 1)
 ds.display_depth_point_cloud(0, 1)
 ds.display_lidar_point_cloud(0, 1)

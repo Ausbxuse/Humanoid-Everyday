@@ -167,12 +167,6 @@ If you wish to use your own custom loader, here is the directory outline of Huma
 
 ---
 
-# Citation
-
-If you use the Humanoid Everyday Dataset in your research, please cite:
-
-> **Humanoid Everyday Dataset.** Zhenyu Zhao et al., 2025.
-
 # License
 
 This dataset is released under the MIT License
