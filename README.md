@@ -90,13 +90,75 @@ Each time step is represented by a Python dictionary with the following fields:
 {
     # Scalar identifiers
     "time":       np.float64,                # UNIX timestamp (s)
-    "robot_type": np.str_,                   # Robot model identifier (e.g. "g1")
+    "robot_type": np.str_,                   # Robot model identifier (G1 only, H1_2 datasets do  not have this field)
 
     # Robot states
     "states": {
         "arm_state":   np.ndarray((14,),  dtype=np.float64),  # 14 joint angles
-        "leg_state":   np.ndarray((15,),  dtype=np.float64),  # 15 joint angles
-        "hand_state":  np.ndarray((14,),  dtype=np.float64),  # 14 joint angles
+        # Arm joint indices
+        #   0: LeftShoulderPitch
+        #   1: LeftShoulderRoll
+        #   2: LeftShoulderYaw
+        #   3: LeftElbow
+        #   4: LeftWristRoll
+        #   5: LeftWristPitch
+        #   6: LeftWristYaw
+        #   7: RightShoulderPitch
+        #   8: RightShoulderRoll
+        #   9: RightShoulderYaw
+        #  10: RightElbow
+        #  11: RightWristRoll
+        #  12: RightWristPitch
+        #  13: RightWristYaw
+        "leg_state":   np.ndarray((15 or 13,),  dtype=np.float64),  # 15 joint angles for G1, 13 for H1_2
+
+        # Leg/waist joint indices
+        #   0: LeftHipYaw
+        #   1: LeftHipRoll
+        #   2: LeftHipPitch
+        #   3: LeftKnee
+        #   4: LeftAnkle
+        #   5: LeftAnkleRoll
+        #   6: RightHipYaw
+        #   7: RightHipRoll
+        #   8: RightHipPitch
+        #   9: RightKnee
+        #  10: RightAnkle
+        #  11: RightAnkleRoll
+        # Waist
+        #  12: kWaistYaw
+        #  [13]: kWaistRoll # G1 only
+        #  [14]: kWaistPitch # G1 only
+        "hand_state":  np.ndarray((14 or 12,),  dtype=np.float64),  # 14 joint angles for Unitree Dex3 Hand, 12 for Inspire Dextrous Hand
+        # Dex3 Hand joint indices
+        #   0: LeftThumbRotation
+        #   1: LeftThumbLowerMotor
+        #   2: LeftThumbUpperMotor
+        #   3: LeftMiddleFingerLowerMotor
+        #   4: LeftMiddleFingerUpperMotor
+        #   5: LeftIndexFingerLowerMotor
+        #   6: LeftIndexFingerUpperMotor
+        #   7: RightThumbRotation
+        #   8: RightThumbLowerMotor
+        #   9: RightThumbUpperMotor
+        #  10: RightMiddleFingerLowerMotor
+        #  11: RightMiddleFingerUpperMotor
+        #  12: RightIndexFingerLowerMotor
+        #  13: RightIndexFingerUpperMotor
+
+        # Inspire hand
+        #   0: LeftPinkyBending
+        #   1: LeftRingBending
+        #   2: LeftMiddleBending
+        #   3: LeftIndexBending
+        #   4: LeftThumbBending
+        #   5: LeftThumbRotating
+        #   6: RightPinkyBending
+        #   7: RightRingBending
+        #   8: RightMiddleBending
+        #   9: RightIndexBending
+        #   10: RightThumbBending
+        #   11: RightThumbRotating
 
         "hand_pressure_state": [                                # List of per-sensor readings (9 sensors per hand)
             {

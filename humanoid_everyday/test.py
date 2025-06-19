@@ -1,7 +1,7 @@
 from humanoid_everyday import Dataloader
 
 # Load your downloaded task's dataset zip file (e.g., the "push_a_button" task)
-ds = Dataloader("~/Downloads/flip_a_soft_plate.zip")
+ds = Dataloader("~/pick and place orange duster.zip")
 print("Episode length of dataset:", len(ds))
 
 # Display high dimensional data at first episode, second timestep.
