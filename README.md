@@ -10,9 +10,9 @@
 ## Overview
 
 - **Total Download Size:** ~500 GB (across 250 tasks), over 100,000 time-step recorded
-- **Tasks:** 250 diverse scenarios (loco-manipulation, basic manipulation, tool use, deformables, articulated objects, human–robot interaction)
+- **Tasks:** 260 diverse scenarios (loco-manipulation, basic manipulation, tool use, deformables, articulated objects, human–robot interaction)
 - **Episodes per task:** 40
-- **Recording Frequency:** 30
+- **Recording Frequency:** 30 Hz
 
 ### **Modalities captured**
 
@@ -228,6 +228,10 @@ If you wish to use your own custom loader, here is the directory outline of Huma
 - **color/**, **depth/**, **lidar/**: Raw files for each time step.
 
 ---
+
+# Evaluation
+
+You can evaluate your trained policy using the Humanoid Everyday dataset [here](https://humaoideveryday.com).
 
 # License
 
