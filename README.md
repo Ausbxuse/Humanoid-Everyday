@@ -107,6 +107,21 @@ The `Dataloader` provides random access to episodes and time steps as a nested l
 
 ---
 
+## Camera Intrinsics (realsense D435)
+```
+H1: 
+        fx = 392.03189
+        fy = 392.03189
+        cx = 320.19580
+        cy = 235.58174
+
+G1:
+        fx = 389.07278
+        fy = 389.07278
+        cx = 321.61887
+        cy = 238.43630
+```
+
 ## Data Schema
 
 Each time step is represented by a Python dictionary with the following fields:
