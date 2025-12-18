@@ -36,6 +36,7 @@ Each episode is a continuous interaction sequence; use the provided dataloader f
 ---
 
 ## Quickstart
+> **Important:** It is recommended to load our the entire dataset using the lerobot format [here](https://huggingface.co/datasets/USC-GVL/humanoid-everyday) (~1T). If you just want the states and actions from all the trajectories and don't care about the other modalities, you can use the lite datasets from [here](https://huggingface.co/datasets/USC-GVL/Humanoid-Everyday-H1) and [here](https://huggingface.co/datasets/USC-GVL/Humanoid-Everyday-G1). 
 
 ### Requirements
 
