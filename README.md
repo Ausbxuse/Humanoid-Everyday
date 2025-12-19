@@ -17,7 +17,6 @@
 ### **Modalities captured**
 
 - **Low-dimensional:**
-
   - Joint states (arm, leg, hand)
   - IMU (orientation, accelerometer, gyroscope, RPY)
   - Odometry/Kinematics (position, velocity, orientation)
@@ -26,7 +25,6 @@
   - Inverse kinematics data
 
 - **High-dimensional:**
-
   - Egocentric RGB images (480x640x3, PNG)
   - Depth maps (480x640, uint16)
   - LiDAR point clouds (~6 k points per step, PCD)
@@ -36,7 +34,10 @@ Each episode is a continuous interaction sequence; use the provided dataloader f
 ---
 
 ## Quickstart
-> **Important:** It is recommended to load our the entire dataset using the lerobot format [here](https://huggingface.co/datasets/USC-GVL/humanoid-everyday) (~1T). If you just want the states and actions from all the trajectories and don't care about the other modalities, you can use the lite datasets from [here](https://huggingface.co/datasets/USC-GVL/Humanoid-Everyday-H1) and [here](https://huggingface.co/datasets/USC-GVL/Humanoid-Everyday-G1). 
+
+**Important!!!:** It is recommended to load our the entire dataset using the lerobot format [here](https://huggingface.co/datasets/USC-GVL/humanoid-everyday) (~1T). If you just want the states and actions from all the trajectories and don't care about the other modalities, you can use the lite datasets from [here](https://huggingface.co/datasets/USC-GVL/Humanoid-Everyday-H1) and [here](https://huggingface.co/datasets/USC-GVL/Humanoid-Everyday-G1).
+
+If you wish to convert to lerobot yourself, you can use the script provided at `scripts/he2lerobot.py`, and put your downloaded unzipped trajectories in `<dataset_name>/<task_category>/`, and run the script on `<dataset_name>`.
 
 ### Requirements
 
@@ -89,11 +90,11 @@ for i, episode in enumerate(ds):
             hand_actions = left_hand_angles + right_hand_angles # 12-dim H1 hand actions
         else:   # For G1 data
             hand_actions = episode[0]["actions"]["left_angles"] + episode[0]["actions"]["right_angles"] # 14-dim G1 hand actions
-        
+
         arm_actions = episode[0]["actions"]["sol_q"] # 14-dim arm actions
         actions = np.array(arm_actions + hand_actions)
         print("Actions shape:", actions.shape) # 26 for H1 and 28 for G1
-        
+
         print("RGB image shape:", episode[0]["image"].shape)  # (480, 640, 3)
         print("Depth map shape:", episode[0]["depth"].shape)  # (480, 640)
         print("LiDAR points shape:", episode[0]["lidar"].shape)  # (~6000, 3)
@@ -108,8 +109,9 @@ The `Dataloader` provides random access to episodes and time steps as a nested l
 ---
 
 ## Camera Intrinsics (realsense D435)
+
 ```
-H1: 
+H1:
         fx = 392.03189
         fy = 392.03189
         cx = 320.19580
